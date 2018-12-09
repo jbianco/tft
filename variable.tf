@@ -1,40 +1,46 @@
 variable "aws_vpc_name" {
-  default     = "tft_vpc"
   type        = "string"
   description = "The AWS VPC name"
 }
 
-variable aws_ip_cidr_range {
+variable aws_cidr {
   default     = "10.0.0.0/27"
   type        = "string"
   description = "IP CIDR range for AWS VPC"
 }
 
-variable "aws_regions" {
-  type = "map"
-
-  default = {
-    or = "us-west-2"
-    ca = "us-west-1"
-    va = "us-east-1"
-    br = "sa-east-1"
-    ir = "eu-west-1"
-    uk = "eu-west-2"
-    fr = "eu-west-3"
-  }
+variable "aws_region" {
+  type = "string"
 }
 
-variable "aws_zones" {
-  type = "map"
+variable "aws_zone" {
+  type = "string"
+}
 
-  default = {
-    zone1 = "a"
-    zone2 = "b"
-  }
+variable "aws_server_size" {
+  type        = "string"
+  description = "AWS instance sizing for the server"
 }
 
 variable "service_port" {
   type        = "string"
-  default     = "80"
   description = "Web Server default port"
+}
+
+// Output variables
+
+output "aws_cider_subnet1" {
+  value = "${aws_subnet.subnet1.cidr_block}"
+}
+
+output "aws_instance_id" {
+  value = "${aws_instance.webserver.id}"
+}
+
+output "aws_private_ip" {
+  value = "${aws_instance.webserver.private_ip}"
+}
+
+output "aws_private_dns" {
+  value = "${aws_instance.webserver.private_dns}"
 }

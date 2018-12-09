@@ -8,7 +8,7 @@
 resource "aws_subnet" "subnet1" {
   cidr_block        = "${cidrsubnet(aws_vpc.tfta-environment.cidr_block, 1, 1)}"
   vpc_id            = "${aws_vpc.tfta-environment.id}"
-  availability_zone = "${var.aws_regions["or"]}${var.aws_zones["zone1"]}"
+  availability_zone = "${var.aws_zone}"
 }
 
 #resource "aws_subnet" "subnet2" {
@@ -19,6 +19,7 @@ resource "aws_subnet" "subnet1" {
 
 resource "aws_security_group" "subnetsecurity" {
   vpc_id = "${aws_vpc.tfta-environment.id}"
+  name   = "Private subnet SG"
 
   ingress {
     cidr_blocks = [

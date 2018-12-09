@@ -5,5 +5,5 @@ provider "google" {
 }
 
 provider "aws" {
-  region = "${var.aws_regions["or"]}"
+  region = "${var.aws_region}"
 }

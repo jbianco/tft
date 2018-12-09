@@ -4,7 +4,7 @@
 #}
 
 resource "aws_vpc" "tfta-environment" {
-  cidr_block           = "${var.aws_ip_cidr_range}"
+  cidr_block           = "${var.aws_cidr}"
   enable_dns_hostnames = true
   enable_dns_support   = true
 

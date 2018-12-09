@@ -15,9 +15,11 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "webserver" {
-  ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
-  subnet_id     = "${aws_subnet.subnet1.id}"
+  ami             = "${data.aws_ami.ubuntu.id}"
+  instance_type   = "${var.aws_server_size}"
+  subnet_id       = "${aws_subnet.subnet1.id}"
+  security_groups = ["${aws_security_group.subnetsecurity.id}"]
+
 
   tags {
     Name = "server_instance"
