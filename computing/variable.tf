@@ -20,3 +20,10 @@ variable "vpc_id" {}
 //  value = "${aws_instance.webserver.private_dns}"
 //}
 
+output "server-dns" {
+  value = "${aws_alb.server_lb.dns_name}"
+}
+
+output "lb_helathcheck" {
+  value = "${aws_alb_target_group.lb_targets.health_check}"
+}

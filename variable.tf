@@ -33,19 +33,14 @@ variable "healthcheck_path" {
 
 // Output variables
 
-output "aws_cider_subnet1" {
-  value = "${module.networking.private_cidr}"
+output "Server-DNS" {
+  value = "${module.computing.server-dns}"
 }
 
-//output "aws_instance_id" {
-//  value = "${module.computing.instance_id}"
-//}
-//
-//output "aws_private_ip" {
-//  value = "${module.computing.private_ip}"
-//}
-//
-//output "aws_private_dns" {
-//  value = "${module.computing.private_dns}"
-//}
+output "VPC-id" {
+  value = "${module.networking.vpc_id}"
+}
 
+output "Healthcheck" {
+  value = "${module.computing.lb_helathcheck}"
+}
