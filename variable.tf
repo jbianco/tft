@@ -3,12 +3,6 @@ variable "aws_vpc_name" {
   description = "The AWS VPC name"
 }
 
-variable aws_cidr {
-  default     = "10.0.0.0/27"
-  type        = "string"
-  description = "IP CIDR range for AWS VPC"
-}
-
 variable "aws_region" {
   type = "string"
 }
@@ -22,25 +16,36 @@ variable "aws_server_size" {
   description = "AWS instance sizing for the server"
 }
 
+variable "docker_image" {
+  type        = "string"
+  description = "Docker image to instanciate the service"
+}
+
 variable "service_port" {
   type        = "string"
   description = "Web Server default port"
 }
 
+variable "healthcheck_path" {
+  type        = "string"
+  description = "Path to health check"
+}
+
 // Output variables
 
 output "aws_cider_subnet1" {
-  value = "${aws_subnet.subnet1.cidr_block}"
+  value = "${module.networking.private_cidr}"
 }
 
-output "aws_instance_id" {
-  value = "${aws_instance.webserver.id}"
-}
+//output "aws_instance_id" {
+//  value = "${module.computing.instance_id}"
+//}
+//
+//output "aws_private_ip" {
+//  value = "${module.computing.private_ip}"
+//}
+//
+//output "aws_private_dns" {
+//  value = "${module.computing.private_dns}"
+//}
 
-output "aws_private_ip" {
-  value = "${aws_instance.webserver.private_ip}"
-}
-
-output "aws_private_dns" {
-  value = "${aws_instance.webserver.private_dns}"
-}
