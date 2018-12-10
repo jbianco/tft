@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sudo systemctl enable docker
-
 mkdir -p /tmp/www/healthcheck
 cd /tmp/www
 
@@ -9,7 +7,7 @@ cat <<EOT >> /tmp/www/index.html
 <<!DOCTYPE html>
  <html>
  <body>
- <h1 align="center" style="font-family:verdana;">An HTML whatch</h1>
+ <h1 align="center" style="font-family:verdana;">Enjoy the HTML analog clock</h1>
  <div id="txt" align="center" style="font-family:verdana;">
  <canvas id="canvas" width="400" height="400" align="center">
  </canvas>
